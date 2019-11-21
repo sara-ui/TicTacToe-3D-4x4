@@ -1,7 +1,7 @@
-package de.htwg.se.sudoku.controller
+package de.htwg.se.ticTacToe3D.controller
 
-import de.htwg.se.sudoku.model.Game
-import de.htwg.se.sudoku.util.Observer
+import de.htwg.se.ticTacToe3D.model.Game
+import de.htwg.se.ticTacToe3D.util.Observer
 
 import scala.language.reflectiveCalls
 import org.scalatest.{Matchers, WordSpec}
