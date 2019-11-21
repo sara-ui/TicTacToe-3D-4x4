@@ -77,11 +77,10 @@ class Controller(var game: Game) extends Observable {
       notifyObservers
     }
   }
-  def setValue(row: Int, column: Int, grid: Int): Unit = {
+  def setValue(row: Int, column: Int, grid: Int): Boolean = {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       statusMessage = Messages.ERROR_GIVE_PLAYERS_START
       notifyObservers
-      return
     }
     if (checkData(row, column, grid)) {
       if(myTurn){
@@ -93,6 +92,7 @@ class Controller(var game: Game) extends Observable {
       }
       myTurn = !myTurn
     }
+    true
   }
   override def toString: String = game.customToString
   def getNextPlayer(index: Int): String = {
@@ -102,7 +102,7 @@ class Controller(var game: Game) extends Observable {
       game.players(0).name
     }
   }
-  def tryToMove(playerIndex: Int, row: Int, column: Int, grid: Int): Unit = {
+  def tryToMove(playerIndex: Int, row: Int, column: Int, grid: Int): Boolean = {
     if (game.sellIsSet(row, column, grid)) {
       this.myTurn = !this.myTurn
       this.statusMessage = Messages.CELL_IS_SET
@@ -111,8 +111,9 @@ class Controller(var game: Game) extends Observable {
       this.statusMessage = Messages.playerMoveToString(game.players(playerIndex).name, row, column, grid) + getNextPlayer(playerIndex) + Messages.NEXT
     }
     notifyObservers
+    true
   }
-  def rest (): Unit = {
+  def rest (): Boolean = {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       this.statusMessage = Messages.ERROR_GIVE_PLAYERS_RESET
     } else {
@@ -122,8 +123,9 @@ class Controller(var game: Game) extends Observable {
       this.statusMessage = Messages.GAME_RESET_MESSAGE + game.players(0).name + Messages.INFO_ABOUT_THE_GAME
     }
     notifyObservers
+    true
   }
-  def setPlayers (player1: String, player2: String): Unit = {
+  def setPlayers (player1: String, player2: String): Boolean = {
     if ("".equals(player1) || "".equals(player2)) {
       this.statusMessage = Messages.PLAYER_NAME
       notifyObservers
@@ -132,6 +134,7 @@ class Controller(var game: Game) extends Observable {
     }
     statusMessage = Messages.PLAYER_DEFINED_MESSAGE + player1 + Messages.INFO_ABOUT_THE_GAME
     notifyObservers
+    true
   }
 }
 
