@@ -83,6 +83,7 @@ class Controller(var game: Game) extends Observable {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       statusMessage = Messages.ERROR_GIVE_PLAYERS_START
       notifyObservers
+      return false
     }
     if (checkData(row, column, grid)) {
       if(myTurn){
