@@ -21,6 +21,7 @@ class ControllerSpec extends WordSpec with Matchers {
       "notify its Observer after players creation" in {
         controller.setValue(1, 1, 1)
         observer.updated should be(true)
+        controller.setPlayers("", "")
         controller.setPlayers("player1", "player2")
         observer.updated should be(true)
         controller.game.players(0).name should be("player1")
