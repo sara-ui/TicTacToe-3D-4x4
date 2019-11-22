@@ -1,6 +1,7 @@
 package de.htwg.se.ticTacToe3D.controller
 
 import de.htwg.se.ticTacToe3D.model.Game
+import de.htwg.se.ticTacToe3D.model.Cell
 import de.htwg.se.ticTacToe3D.util.Observable
 
 class Controller(var game: Game) extends Observable {
@@ -113,7 +114,7 @@ class Controller(var game: Game) extends Observable {
     notifyObservers
     true
   }
-  def rest (): Boolean = {
+  def rest: Boolean = {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       this.statusMessage = Messages.ERROR_GIVE_PLAYERS_RESET
     } else {
