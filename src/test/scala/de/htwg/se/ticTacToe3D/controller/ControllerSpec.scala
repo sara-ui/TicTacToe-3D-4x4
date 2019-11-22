@@ -48,7 +48,8 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.setValue(4, 4, 4)
         observer.updated should be(true)
       }
-      "notify its Observer after winning" in {
+      "notify its Observer after winning rows" in {
+        controller.reset
         controller.setValue(3, 0, 3)
         controller.setValue(2, 0, 3)
         controller.setValue(3, 1, 3)
@@ -59,14 +60,15 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.setValue(2, 3, 3)
         observer.updated should be(true)
       }
-      "notify its Observer after winning diagonal grids" in {
-        controller.setValue(3, 0, 3)
+      "notify its Observer after winning columns" in {
+        controller.reset
+        controller.setValue(0, 0, 3)
         controller.setValue(2, 0, 3)
-        controller.setValue(3, 0, 2)
+        controller.setValue(1, 0, 3)
         controller.setValue(2, 1, 3)
-        controller.setValue(3, 0, 1)
+        controller.setValue(2, 0, 3)
         controller.setValue(2, 2, 3)
-        controller.setValue(3, 0, 0)
+        controller.setValue(3, 0, 3)
         controller.setValue(2, 3, 3)
         observer.updated should be(true)
       }

@@ -13,7 +13,7 @@ object TicTacToe {
   controller.notifyObservers
 
   def main(args: Array[String]): Unit = {
-    var input: String = if (args == null) "" else args(0)
+    var input: String = if (args == null || args.isEmpty) "" else args(0)
     if (!input.isEmpty) tui.processInputLine(input)
     else do {
       input = readLine()

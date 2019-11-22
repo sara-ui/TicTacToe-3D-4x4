@@ -34,6 +34,7 @@ class Controller(var game: Game) extends Observable {
     }
     valid
   }
+  /*
   def checkForWinDiagonalGrids(symbol: String): Boolean = {
     var valid = true
     for (a <- 0 to 3) {
@@ -50,6 +51,7 @@ class Controller(var game: Game) extends Observable {
     }
     valid
   }
+   */
   def checkForWinDiagonal(symbol: String, grid: Int): Boolean = {
     var valid = true
     for (index <- 0 to 3) {
