@@ -6,16 +6,16 @@ import de.htwg.se.ticTacToe3D.model.Game
 
 import scala.io.StdIn.readLine
 
-object TicTacToe3D {
+object TicTacToe {
   var controller = new Controller(new Game())
 
   val tui = new Tui(controller)
   controller.notifyObservers
 
   def main(args: Array[String]): Unit = {
-    var input: String = ""
-
-    do {
+    var input: String = if (args == null) "" else args(0)
+    if (!input.isEmpty) tui.processInputLine(input)
+    else do {
       input = readLine()
       tui.processInputLine(input)
     } while (input != "q")

@@ -28,16 +28,6 @@ class TuiSpec extends WordSpec with Matchers{
       controller.game.sellIsSet(3, 0, 3) should be(false)
       controller.game.grids(3).cell(3, 0).value should be("")
     }
-    "solve a Sudoku on input 's'" in {
-      tui.processInputLine("n")
-      tui.processInputLine("s")
-      controller.grid.solved should be(true)
-    }
-    "do nothing on bad input like'99999'" in {
-      val old = controller.gridToString
-      tui.processInputLine("99999")
-      controller.gridToString should be(old)
-    }
   }
 
 }
