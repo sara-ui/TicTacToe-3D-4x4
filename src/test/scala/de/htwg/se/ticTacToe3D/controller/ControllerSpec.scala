@@ -50,13 +50,13 @@ class ControllerSpec extends WordSpec with Matchers {
       }
       "notify its Observer after winning rows" in {
         controller.reset
-        controller.setValue(3, 0, 3)
+        controller.setValue(0, 0, 0)
         controller.setValue(2, 0, 3)
-        controller.setValue(3, 1, 3)
+        controller.setValue(0, 1, 0)
         controller.setValue(2, 1, 3)
-        controller.setValue(3, 2, 3)
+        controller.setValue(0, 2, 0)
         controller.setValue(2, 2, 3)
-        controller.setValue(3, 3, 3)
+        controller.setValue(0, 3, 0)
         controller.setValue(2, 3, 3)
         observer.updated should be(true)
       }
