@@ -72,6 +72,18 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.setValue(2, 3, 3)
         observer.updated should be(true)
       }
+      "notify its Observer after winning Diagonal" in {
+        controller.reset
+        controller.setValue(0, 0, 0)
+        controller.setValue(2, 0, 3)
+        controller.setValue(1, 1, 0)
+        controller.setValue(2, 1, 3)
+        controller.setValue(2, 2, 0)
+        controller.setValue(2, 2, 3)
+        controller.setValue(3, 3, 0)
+        controller.setValue(2, 3, 3)
+        observer.updated should be(true)
+      }
       "notify its Observer after resetting" in {
         controller.reset
         observer.updated should be(true)
