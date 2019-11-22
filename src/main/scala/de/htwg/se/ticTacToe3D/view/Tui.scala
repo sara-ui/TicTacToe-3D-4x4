@@ -14,7 +14,7 @@ class Tui(controller: Controller) extends Observer{
   def processInputLine(input: String):Unit = {
     input match {
       case "q" =>
-      case "r"=> controller.rest
+      case "r"=> controller.reset
       case MovePattern(input) => checkIfMove(input)
       case PlayersPattern(input) => checkIfPlayers(input)
     }

@@ -5,6 +5,7 @@ import de.htwg.se.ticTacToe3D.model.Cell
 import de.htwg.se.ticTacToe3D.util.Observable
 
 class Controller(var game: Game) extends Observable {
+
   var won: Array[Boolean] = Array(false, false)
   var myTurn: Boolean = true
   var statusMessage: String = Messages.WELCOME_MESSAGE
@@ -114,7 +115,7 @@ class Controller(var game: Game) extends Observable {
     notifyObservers
     true
   }
-  def rest: Boolean = {
+  def reset: Boolean = {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       this.statusMessage = Messages.ERROR_GIVE_PLAYERS_RESET
     } else {
