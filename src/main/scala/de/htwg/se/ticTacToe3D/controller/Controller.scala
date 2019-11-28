@@ -1,10 +1,17 @@
 package de.htwg.se.ticTacToe3D.controller
 
-import de.htwg.se.ticTacToe3D.model.Game
-import de.htwg.se.ticTacToe3D.model.Cell
+import de.htwg.se.ticTacToe3D.model.{FactoryProducer, Game, WinStateStrategyTemplate}
 import de.htwg.se.ticTacToe3D.util.Observable
 
-class Controller(var game: Game) extends Observable {
+class Controller(var game: Game,
+                  var oneGridStrategy: Array[WinStateStrategyTemplate],
+                  var allGridStrategy : Array[WinStateStrategyTemplate]) extends Observable {
+
+  def this (game: Game) {
+    this(game,
+      Array.fill(2)(FactoryProducer("oneD").getInstance()),
+      Array.fill(2)(FactoryProducer("fourD").getInstance()))
+  }
 
   var won: Array[Boolean] = Array(false, false)
   var myTurn: Boolean = true
@@ -17,70 +24,15 @@ class Controller(var game: Game) extends Observable {
     }
     true
   }
-  def checkForWinGrid(symbol: String, i: Int, row: Boolean = true): Boolean = {
-    var valid = true
-    for (a <- 0 to 3) {
-      valid = true
-      for (b <- 0 to 3) {
-        if (row) {
-          valid = valid && game.grids(i).cell(a, b).value == symbol
-        } else {
-          valid = valid && game.grids(i).cell(b, a).value == symbol
-        }
-      }
-      if (valid) {
-        return true
-      }
-    }
-    valid
-  }
-  /*
-  def checkForWinDiagonalGrids(symbol: String): Boolean = {
-    var valid = true
-    for (a <- 0 to 3) {
-      valid = true
-      for (b <- 0 to 3) {
-        valid = true
-        for (i <- 0 to 3) {
-          valid = valid && game.grids(i).cell(a, b).value == symbol
-        }
-        if (valid) {
-          return true
-        }
-      }
-    }
-    valid
-  }
-   */
-  def checkForWinDiagonal(symbol: String, grid: Int): Boolean = {
-    var valid = true
-    for (index <- 0 to 3) {
-      valid = valid && game.grids(grid).cell(index, index).value == symbol
-    }
-    if (!valid) {
-      valid = true
-      for (index <- 0 to 3) {
-        valid = valid && game.grids(grid).cell(3 - index, index).value == symbol
-      }
-    }
-    valid
-  }
-  def checkForWin(value: Int): Unit = {
-    val symbol = game.players(value).symbol
-
-    for (i <- 0 to 3) {
-      if (!won(value)) {
-        // One Grid Checks
-        won(value) = checkForWinGrid(symbol, i) || checkForWinGrid(symbol, i, row = false) || checkForWinDiagonal(symbol, i)
-        // @TODO: All Grids checks
-        // won(value) = won(value) || checkForWinDiagonalGrids(symbol)
-      }
-    }
-    if(won(value)) {
-      this.statusMessage = game.players(value).name + Messages.WIN_MESSAGE
+  def checkForWin(i: Int, row: Int, column: Int, grid: Int): Boolean = {
+    won(i) = oneGridStrategy(i).checkForWin(row, column, grid) || allGridStrategy(i).checkForWin(row, column, grid)
+    if(won(i)) {
+      this.statusMessage = game.players(i).name + Messages.WIN_MESSAGE
       notifyObservers
     }
+    true
   }
+
   def setValue(row: Int, column: Int, grid: Int): Boolean = {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       statusMessage = Messages.ERROR_GIVE_PLAYERS_START
@@ -90,10 +42,10 @@ class Controller(var game: Game) extends Observable {
     if (checkData(row, column, grid)) {
       if(myTurn){
         tryToMove(0, row, column, grid)
-        checkForWin(0)
+        checkForWin(0, row, column, grid)
       }else{
         tryToMove(1, row, column, grid)
-        checkForWin(1)
+        checkForWin(1, row, column, grid)
       }
       myTurn = !myTurn
     }
@@ -125,6 +77,8 @@ class Controller(var game: Game) extends Observable {
       game = new Game(game.players(0).name, game.players(1).name, "X", "O")
       myTurn = true
       won = Array(false, false)
+      oneGridStrategy = Array.fill(2)(FactoryProducer("oneD").getInstance())
+      allGridStrategy = Array.fill(2)(FactoryProducer("fourD").getInstance())
       this.statusMessage = Messages.GAME_RESET_MESSAGE + game.players(0).name + Messages.INFO_ABOUT_THE_GAME
     }
     notifyObservers
