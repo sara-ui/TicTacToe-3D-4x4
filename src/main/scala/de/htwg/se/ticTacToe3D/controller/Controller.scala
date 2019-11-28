@@ -9,8 +9,8 @@ class Controller(var game: Game,
 
   def this (game: Game) {
     this(game,
-      Array.fill(2)(FactoryProducer("oneD").getInstance()),
-      Array.fill(2)(FactoryProducer("fourD").getInstance()))
+      Array.fill(2)(FactoryProducer("oneD")),
+      Array.fill(2)(FactoryProducer("fourD")))
   }
 
   var won: Array[Boolean] = Array(false, false)
@@ -77,8 +77,8 @@ class Controller(var game: Game,
       game = new Game(game.players(0).name, game.players(1).name, "X", "O")
       myTurn = true
       won = Array(false, false)
-      oneGridStrategy = Array.fill(2)(FactoryProducer("oneD").getInstance())
-      allGridStrategy = Array.fill(2)(FactoryProducer("fourD").getInstance())
+      oneGridStrategy = Array.fill(2)(FactoryProducer("oneD"))
+      allGridStrategy = Array.fill(2)(FactoryProducer("fourD"))
       this.statusMessage = Messages.GAME_RESET_MESSAGE + game.players(0).name + Messages.INFO_ABOUT_THE_GAME
     }
     notifyObservers

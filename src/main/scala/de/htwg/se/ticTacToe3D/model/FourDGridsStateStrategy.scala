@@ -1,10 +1,12 @@
 package de.htwg.se.ticTacToe3D.model
 
-class FourDGridsStateStrategy(var verticalColumn: Array[Array[Int]], var diagOfAllGrids: List[Array[Array[Int]]])
+class FourDGridsStateStrategy(var verticalColumn: Array[Array[Int]],
+                              var diagOfAllGrids: List[Array[Array[Int]]])
   extends WinStateStrategyTemplate {
 
   def this () = {
-    this(Array.tabulate(4, 4)((row, col) => 0), List.fill(4)(Array.tabulate(4, 4) { (row, col) => 0}))
+    this(Array.tabulate(4, 4)((row, col) => 0),
+      List.fill(4)(Array.tabulate(4, 4) { (row, col) => 0}))
   }
 
   override def checkRow(row: Int, grid: Int): Boolean = {
