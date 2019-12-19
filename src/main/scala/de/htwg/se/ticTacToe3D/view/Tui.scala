@@ -15,6 +15,8 @@ class Tui(controller: Controller) extends Observer{
     input match {
       case "q" =>
       case "r"=> controller.reset
+      case "z" => controller.undo
+      case "y" => controller.redo
       case MovePattern(input) => checkIfMove(input)
       case PlayersPattern(input) => checkIfPlayers(input)
     }

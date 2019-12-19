@@ -21,12 +21,12 @@ class TuiSpec extends WordSpec with Matchers{
     }
     "set a cell on input '303'" in {
       tui.processInputLine("303")
-      controller.game.sellIsSet(3, 0, 3) should be(true)
+      controller.game.cellIsSet(3, 0, 3) should be(true)
       controller.game.grids(3).cell(3, 0).value should not equal ""
     }
     "reset the game on input 'r'" in {
       tui.processInputLine("r")
-      controller.game.sellIsSet(3, 0, 3) should be(false)
+      controller.game.cellIsSet(3, 0, 3) should be(false)
       controller.game.grids(3).cell(3, 0).value should be("")
     }
   }

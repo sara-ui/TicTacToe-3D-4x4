@@ -16,7 +16,9 @@ case class Game(grids: Vector[Grid], players: Vector[Player]) {
 
   def set (row:Int, col:Int, grid: Int, playerIndex: Int): Game = copy(grids.updated(grid, grids(grid).set(row, col, players(playerIndex).symbol)))
 
-  def sellIsSet (row: Int, column: Int, grid: Int): Boolean =  grids(grid).cellIsSet(row, column)
+  def resetCell (row:Int, col:Int, grid: Int): Game = copy(grids.updated(grid, grids(grid).set(row, col, "")))
+
+  def cellIsSet (row: Int, column: Int, grid: Int): Boolean =  grids(grid).cellIsSet(row, column)
 
   def customToString: String = {
     var res = ""

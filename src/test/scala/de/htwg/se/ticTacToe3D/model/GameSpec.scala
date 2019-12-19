@@ -39,8 +39,8 @@ class GameSpec extends WordSpec with Matchers {
       }
       "sell is set" in {
         val newGame = game.set(1, 1, 1, 1)
-        newGame.sellIsSet(1, 1, 1) should be(true)
-        game.sellIsSet(1, 1, 1) should be(false)
+        newGame.cellIsSet(1, 1, 1) should be(true)
+        game.cellIsSet(1, 1, 1) should be(false)
       }
     }
   }

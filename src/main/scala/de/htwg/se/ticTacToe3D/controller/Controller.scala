@@ -1,11 +1,12 @@
 package de.htwg.se.ticTacToe3D.controller
 
 import de.htwg.se.ticTacToe3D.model.{FactoryProducer, Game, WinStateStrategyTemplate}
-import de.htwg.se.ticTacToe3D.util.Observable
+import de.htwg.se.ticTacToe3D.util.{Observable, UndoManager}
 
 class Controller(var game: Game,
                   var oneGridStrategy: Array[WinStateStrategyTemplate],
                   var allGridStrategy : Array[WinStateStrategyTemplate]) extends Observable {
+  private val undoManager = new UndoManager
 
   def this (game: Game) {
     this(game,
@@ -60,16 +61,30 @@ class Controller(var game: Game,
     }
   }
   def tryToMove(playerIndex: Int, row: Int, column: Int, grid: Int): Boolean = {
-    if (game.sellIsSet(row, column, grid)) {
+    if (game.cellIsSet(row, column, grid)) {
       this.myTurn = !this.myTurn
       this.statusMessage = Messages.CELL_IS_SET
     } else {
-      game = game.set(row, column, grid, playerIndex)
+      undoManager.doStep(new SetCommand(row, column, grid, playerIndex, this))
       this.statusMessage = Messages.playerMoveToString(game.players(playerIndex).name, row, column, grid) + getNextPlayer(playerIndex) + Messages.NEXT
     }
     notifyObservers
     true
   }
+  def undo: Unit = {
+    myTurn = !myTurn
+    undoManager.undoStep
+    this.statusMessage = Messages.UNDO_STEP
+    notifyObservers
+  }
+
+  def redo: Unit = {
+    myTurn = !myTurn
+    undoManager.redoStep
+    this.statusMessage = Messages.REDO_STEP
+    notifyObservers
+  }
+
   def reset: Boolean = {
     if (game.players.contains(null) || "".equals(game.players(0).name)) {
       this.statusMessage = Messages.ERROR_GIVE_PLAYERS_RESET
@@ -112,5 +127,7 @@ object Messages {
   val GAME_RESET_MESSAGE: String = "Game was reseted!!!! \n"
   val ERROR_GIVE_PLAYERS_RESET: String = "you can't reset the Game without giving the name of the players\n" + ENTER_PLAYERS
   val WIN_MESSAGE: String = " you won !! congratulation \n "+ " if you want to start again press r + enter, if not press q + enter to quit"
+  val UNDO_STEP: String = "you just undid your step, you can replay"
+  val REDO_STEP: String = "you just redid your step, thanks"
   def playerMoveToString(player: String, row: Int, column: Int, grid: Int): String = player + " played : (" + row + "," + column + ") in Grid " + grid + "\n"
 }
