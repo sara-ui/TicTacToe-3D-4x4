@@ -33,11 +33,9 @@ class GridPanel(size: Double, shade: Double, id: Int, controller: Controller) ex
       color.deriveColor(0.0, 1.0, 1 - 0.15 * col, 1.0))
     height -= 0.335
     col += 0.2
-    cell.setOnMouseClicked(new EventHandler[MouseEvent] {
-      override def handle(event: MouseEvent): Unit = {
-        val data = cell.getId.split(" ")
-        if (!controller.won(0) && !controller.won(1)) controller.setValue(data(0).toInt, data(1).toInt, data(2).toInt)
-      }
+    cell.setOnMouseClicked((event: MouseEvent) => {
+      val data = cell.getId.split(" ")
+      if (!controller.won(0) && !controller.won(1)) controller.setValue(data(0).toInt, data(1).toInt, data(2).toInt)
     })
     cell
   } }
