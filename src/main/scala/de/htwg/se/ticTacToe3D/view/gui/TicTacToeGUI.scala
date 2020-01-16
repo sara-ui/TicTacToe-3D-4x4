@@ -11,7 +11,7 @@ class TicTacToeGUI(controller: ControllerInterface) extends JFrame{
   setTitle(Messages.TITLE)
   setLocationRelativeTo(null)
 
-  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+  // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
   setMinimumSize(new Dimension(600, 600))
 
   def constructTicTacToePane(controller: ControllerInterface) = {
