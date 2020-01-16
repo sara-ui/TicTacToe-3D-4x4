@@ -3,6 +3,7 @@ package de.htwg.se.ticTacToe3D
 import de.htwg.se.ticTacToe3D.aview.Tui
 import de.htwg.se.ticTacToe3D.controller.Controller
 import de.htwg.se.ticTacToe3D.model.Game
+import de.htwg.se.ticTacToe3D.view.gui.TicTacToeGUI
 
 import scala.io.StdIn.readLine
 
@@ -10,6 +11,7 @@ object TicTacToe {
   var controller = new Controller(new Game())
 
   val tui = new Tui(controller)
+  val gui = new TicTacToeGUI(controller)
   controller.notifyObservers
 
   def main(args: Array[String]): Unit = {

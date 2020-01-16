@@ -13,6 +13,7 @@ class Controller(var game: Game,
       Array.fill(2)(FactoryProducer("oneD")),
       Array.fill(2)(FactoryProducer("fourD")))
   }
+  def exit = System.exit(0)
 
   var won: Array[Boolean] = Array(false, false)
   var myTurn: Boolean = true
@@ -114,6 +115,7 @@ class Controller(var game: Game,
 
 object Messages {
   val CELL_IS_SET: String = "This Cell is Already been setted, please try another one \n"
+  val USER_ERROR: String = "Please give the two players names \n"
   val ENTER_PLAYERS: String = "please enter the two players name with - between then (don't forget no spacing)"
   val WELCOME_MESSAGE: String = "Welcome to HTWG TicTacToe 4x4x4! \n" + ENTER_PLAYERS
   val PLAYER_NAME: String = "please enter players name again"
@@ -129,5 +131,7 @@ object Messages {
   val WIN_MESSAGE: String = " you won !! congratulation \n "+ " if you want to start again press r + enter, if not press q + enter to quit"
   val UNDO_STEP: String = "you just undid your step, you can replay"
   val REDO_STEP: String = "you just redid your step, thanks"
+  val TITLE: String = "TicTacToe 4x4x4"
+  val MOVEMENT: String = "To move the Grids : D to go right, A to go left, W to go up, S to go down\n\n"
   def playerMoveToString(player: String, row: Int, column: Int, grid: Int): String = player + " played : (" + row + "," + column + ") in Grid " + grid + "\n"
 }
