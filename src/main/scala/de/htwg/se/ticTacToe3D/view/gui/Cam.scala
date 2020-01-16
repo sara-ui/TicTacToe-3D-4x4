@@ -1,7 +1,6 @@
 package de.htwg.se.ticTacToe3D.view.gui
-
-import scalafx.scene.Group
-import scalafx.scene.transform.{Rotate, Scale, Translate}
+import javafx.scene.Group
+import javafx.scene.transform.{Rotate, Scale, Translate}
 
 
 class Cam extends Group{
@@ -15,10 +14,10 @@ class Cam extends Group{
   val s: Scale = new Scale()
 
   def init = {
-    rx.setAxis(Rotate.XAxis)
-    ry.setAxis(Rotate.YAxis)
-    rz.setAxis(Rotate.ZAxis)
-    this.transforms.addAll(t, p, rx, rz, ry, s, ip)
+    rx.setAxis(Rotate.X_AXIS)
+    ry.setAxis(Rotate.Y_AXIS)
+    rz.setAxis(Rotate.Z_AXIS)
+    this.getTransforms.addAll(t, p, rx, rz, ry, s, ip)
   }
 
 }
