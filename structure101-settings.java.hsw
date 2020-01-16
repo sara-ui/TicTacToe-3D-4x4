@@ -16,16 +16,16 @@
   <property name="show-needs-to-compile" value="false" />
   <property name="physical-layering-system-file" value="structure101-spec.xml" />
   <classpath>
-    <classpathentry kind="lib" path="target/scala-2.13/classes" module="TicTacToe4x4" />
+    <classpathentry kind="lib" path="target/scala-2.12/classes" module="TicTacToe-3D-4x4" />
   </classpath>
   <pom-root-files />
   <modules>
-    <module name="TicTacToe4x4" kind="ide-project" />
-    <module name="TicTacToe4x4-build" kind="ide-project" />
+    <module name="TicTacToe-3D-4x4" kind="ide-project" />
+    <module name="TicTacToe-3D-4x4-build" kind="ide-project" />
   </modules>
   <modules-in-scope>
-    <module name="TicTacToe4x4" />
-    <module name="TicTacToe4x4-build" />
+    <module name="TicTacToe-3D-4x4" />
+    <module name="TicTacToe-3D-4x4-build" />
   </modules-in-scope>
   <excludes>
     <exclude expression="*.*&amp;amp;*" active="true" />

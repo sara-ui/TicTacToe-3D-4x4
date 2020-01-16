@@ -1,14 +1,12 @@
 package de.htwg.se.ticTacToe3D.view.gui
-import de.htwg.se.ticTacToe3D.controller.Controller
-import de.htwg.se.ticTacToe3D.model.Cell
-import javafx.event.EventHandler
+import de.htwg.se.ticTacToe3D.controller.ControllerInterface
 import javafx.scene.Group
 import javafx.scene.input.MouseEvent
 import javafx.scene.transform.Rotate
 import javafx.scene.paint.Color
 
 
-class GridPanel(size: Double, shade: Double, id: Int, controller: Controller) extends Group {
+class GridPanel(size: Double, shade: Double, id: Int, controller: ControllerInterface) extends Group {
 
   private val color = Color.rgb(237, 255, 250)
   val rx = new Rotate(0, Rotate.X_AXIS)

@@ -1,4 +1,4 @@
-package de.htwg.se.ticTacToe3D.controller
+package de.htwg.se.ticTacToe3D.controller.controllerComponent
 
 import de.htwg.se.ticTacToe3D.util.Command
 

@@ -2,23 +2,24 @@ package de.htwg.se.ticTacToe3D.view.gui
 
 import java.awt.{BorderLayout, Dimension, GridLayout}
 
-import de.htwg.se.ticTacToe3D.controller.{Controller, Messages}
+import de.htwg.se.ticTacToe3D.controller.ControllerInterface
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.{Controller, Messages}
 import javafx.application.Application
 import javax.swing._
 
-class TicTacToeGUI(controller: Controller) extends JFrame{
+class TicTacToeGUI(controller: ControllerInterface) extends JFrame{
   setTitle(Messages.TITLE)
   setLocationRelativeTo(null)
 
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
   setMinimumSize(new Dimension(600, 600))
 
-  def constructTicTacToePane(controller: Controller) = {
+  def constructTicTacToePane(controller: ControllerInterface) = {
     getContentPane.add(getLoginPanel(controller), BorderLayout.CENTER)
     setVisible(true)
   }
 
-  def getLoginPanel(controller: Controller): JPanel = {
+  def getLoginPanel(controller: ControllerInterface): JPanel = {
     val start = new JButton("Start")
     val player1 = new JTextField
     val user1 = new JLabel("First Player")

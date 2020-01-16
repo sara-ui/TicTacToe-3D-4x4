@@ -1,6 +1,9 @@
 package de.htwg.se.ticTacToe3D.controller
 
-import de.htwg.se.ticTacToe3D.model.{Cell, Game}
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
+import de.htwg.se.ticTacToe3D.model.Cell
+import de.htwg.se.ticTacToe3D.model.gameComponent.Cell
+import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.{Cell, Game}
 import de.htwg.se.ticTacToe3D.util.Observer
 
 import scala.language.reflectiveCalls

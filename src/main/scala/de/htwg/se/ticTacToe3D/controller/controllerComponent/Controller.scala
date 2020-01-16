@@ -1,19 +1,26 @@
-package de.htwg.se.ticTacToe3D.controller
+package de.htwg.se.ticTacToe3D.controller.controllerComponent
 
-import de.htwg.se.ticTacToe3D.model.{FactoryProducer, Game, WinStateStrategyTemplate}
+import de.htwg.se.ticTacToe3D.controller.ControllerInterface
+import de.htwg.se.ticTacToe3D.model.gameComponent.GameInterface
+import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
+import de.htwg.se.ticTacToe3D.model.{FactoryProducer, WinStateStrategyTemplate}
 import de.htwg.se.ticTacToe3D.util.{Observable, UndoManager}
 
-class Controller(var game: Game,
+class Controller(var game: GameInterface,
                   var oneGridStrategy: Array[WinStateStrategyTemplate],
-                  var allGridStrategy : Array[WinStateStrategyTemplate]) extends Observable {
+                  var allGridStrategy : Array[WinStateStrategyTemplate])
+  extends ControllerInterface {
   private val undoManager = new UndoManager
 
-  def this (game: Game) {
+  def this (game: GameInterface) {
     this(game,
       Array.fill(2)(FactoryProducer("oneD")),
       Array.fill(2)(FactoryProducer("fourD")))
   }
-  def exit = System.exit(0)
+  def exit: Boolean = {
+    System.exit(0)
+    true
+  }
 
   var won: Array[Boolean] = Array(false, false)
   var myTurn: Boolean = true
@@ -61,7 +68,7 @@ class Controller(var game: Game,
       game.players(0).name
     }
   }
-  def tryToMove(playerIndex: Int, row: Int, column: Int, grid: Int): Boolean = {
+  private def tryToMove(playerIndex: Int, row: Int, column: Int, grid: Int): Boolean = {
     if (game.cellIsSet(row, column, grid)) {
       this.myTurn = !this.myTurn
       this.statusMessage = Messages.CELL_IS_SET

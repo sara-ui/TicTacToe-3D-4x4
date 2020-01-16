@@ -1,11 +1,11 @@
 package de.htwg.se.ticTacToe3D.view.gui
-import de.htwg.se.ticTacToe3D.model.Cell
+import de.htwg.se.ticTacToe3D.model.gameComponent.CellInterface
 import javafx.scene.shape.Rectangle
 import javafx.scene.paint.Color
 import javafx.scene.transform.Rotate
 
 
-class CellPanel(cell: Cell,row: Int, column: Int, d: Double,grid: Int,e: Double, f: Double,  color:Color) extends Rectangle{
+class CellPanel(cell: CellInterface, row: Int, column: Int, d: Double, grid: Int, e: Double, f: Double, color:Color) extends Rectangle{
 
   setWidth(d)
   setHeight(d)
@@ -18,7 +18,7 @@ class CellPanel(cell: Cell,row: Int, column: Int, d: Double,grid: Int,e: Double,
   setId(row + " " + column + " " + grid)
   setValue(cell)
 
-  def setValue(cell: Cell): Unit = {
+  def setValue(cell: CellInterface): Unit = {
     if ("X" == cell.value) this.setFill(Color.RED)
     else if ("O" == cell.value) this.setFill(Color.BLUE)
   }

@@ -1,7 +1,8 @@
-package de.htwg.se.ticTacToe3D.model
+package de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl
 
+import de.htwg.se.ticTacToe3D.model.gameComponent.GridInterface
 
-case class Grid(private val cells: Vector[Vector[Cell]]) {
+case class Grid(cells: Vector[Vector[Cell]]) extends GridInterface {
   def this() = this(Vector.tabulate(4, 4) { (row, col) => new Cell() })
 
   val size: Int = cells.size
@@ -12,13 +13,13 @@ case class Grid(private val cells: Vector[Vector[Cell]]) {
 
   def set(row:Int, col:Int, value:String) = copy(cells.updated(row, cells(row).updated(col, Cell(value))))
 
-  def spacing(size: Int): String = {
+  private def spacing(size: Int): String = {
     var res = " "
     for (i <- 0 to size) res += " "
     res
   }
 
-  def addCellToString(row: Int): String = {
+  private def addCellToString(row: Int): String = {
     var str = spacing(row) + " \\"
     for {
       col <- 0 until cells(row).length
@@ -26,14 +27,14 @@ case class Grid(private val cells: Vector[Vector[Cell]]) {
     str
   }
 
-  def newLine(row: Int): String = {
+  private def newLine(row: Int): String = {
     val lineSep = System.lineSeparator
     var res = lineSep + spacing(row)+ "\\-------\\-------\\-------\\-------\\"
     res += " \\-------\\-------\\-------\\-------\\" + lineSep
     res
   }
 
-  def addExplanationCellToString(row: Int, grid: Int): String = {
+  private def addExplanationCellToString(row: Int, grid: Int): String = {
     var res = " \\"
     for {
       column <- 0 until cells(row).length
@@ -54,4 +55,5 @@ case class Grid(private val cells: Vector[Vector[Cell]]) {
     }
     res
   }
+
 }

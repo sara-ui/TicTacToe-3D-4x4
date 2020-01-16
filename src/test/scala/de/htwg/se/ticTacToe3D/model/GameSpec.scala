@@ -1,5 +1,7 @@
 package de.htwg.se.ticTacToe3D.model
 
+import de.htwg.se.ticTacToe3D.model.gameComponent.Cell
+import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.{Cell, Game}
 import org.scalatest.{Matchers, WordSpec}
 
 class GameSpec extends WordSpec with Matchers {

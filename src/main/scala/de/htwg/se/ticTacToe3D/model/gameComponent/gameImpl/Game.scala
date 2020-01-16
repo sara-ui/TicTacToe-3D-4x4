@@ -1,6 +1,8 @@
-package de.htwg.se.ticTacToe3D.model
+package de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl
 
-case class Game(grids: Vector[Grid], players: Vector[Player]) {
+import de.htwg.se.ticTacToe3D.model.gameComponent.GameInterface
+
+case class Game(grids: Vector[Grid], players: Vector[Player]) extends GameInterface {
   def this(player1: Player, player2: Player) = {
     this(Vector.tabulate(4){ _ => new Grid()}, Vector(player1, player2))
    // players = Vector(Player(player1, "O"), Player(player2, "X"))

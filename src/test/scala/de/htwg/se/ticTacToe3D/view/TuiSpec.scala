@@ -1,8 +1,8 @@
 package de.htwg.se.ticTacToe3D.view
 
 import de.htwg.se.ticTacToe3D.aview.Tui
-import de.htwg.se.ticTacToe3D.controller.Controller
-import de.htwg.se.ticTacToe3D.model.Game
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
+import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
 import org.scalatest.{Matchers, WordSpec}
 
 class TuiSpec extends WordSpec with Matchers{
