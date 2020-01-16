@@ -123,7 +123,7 @@ class GameGui() extends Application with Observer{
     this.init(stage)
     TicTacToe.controller.add(this)
     stage.setTitle(Messages.TITLE)
-    camOffset.children.add(cam)
+    camOffset.getChildren.add(cam)
     appGroup.getChildren.addAll(camOffset, statusPanel)
     resetCam()
     this.scene = new Scene(appGroup, 800, 600, true)
@@ -136,7 +136,7 @@ class GameGui() extends Application with Observer{
     scene.setCamera(new PerspectiveCamera())
     cam.setScaleX(0.5)
     cam.setScaleY(0.5)
-    cam.children.addAll(setGrids())
+    cam.getChildren.addAll(setGrids())
     frameCam(stage, scene)
     scene.setOnKeyPressed((ke: KeyEvent) => {
       if (KeyCode.Q.equals(ke.getCode)) TicTacToe.controller.exit
@@ -154,9 +154,8 @@ class GameGui() extends Application with Observer{
 
   override def update: Boolean = {
     Platform.runLater(() => {
-      cam.children.addAll(setGrids())
+      cam.getChildren.addAll(setGrids())
       statusPanel.setText(Messages.MOVEMENT + TicTacToe.controller.statusMessage)
-      true
     })
     true
   }
