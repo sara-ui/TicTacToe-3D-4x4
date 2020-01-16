@@ -11,8 +11,3 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
 libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "2.1.1"
 libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
 
-
-unmanagedJars in Compile +=
-  Attributed.blank(
-    file(scala.util.Properties.javaHome) / "/lib/jfxrt.jar"
-  )
