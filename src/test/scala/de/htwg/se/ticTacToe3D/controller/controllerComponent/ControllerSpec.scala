@@ -1,13 +1,10 @@
-package de.htwg.se.ticTacToe3D.controller
+package de.htwg.se.ticTacToe3D.controller.controllerComponent
 
-import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
-import de.htwg.se.ticTacToe3D.model.Cell
-import de.htwg.se.ticTacToe3D.model.gameComponent.Cell
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.{Cell, Game}
 import de.htwg.se.ticTacToe3D.util.Observer
+import org.scalatest.{Matchers, WordSpec}
 
 import scala.language.reflectiveCalls
-import org.scalatest.{Matchers, WordSpec}
 
 class ControllerSpec extends WordSpec with Matchers {
 

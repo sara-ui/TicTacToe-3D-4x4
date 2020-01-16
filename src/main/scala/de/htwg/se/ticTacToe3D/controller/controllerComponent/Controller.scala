@@ -132,11 +132,11 @@ object Messages {
     " the 3 numbers are the row, column, grid. Now, MAKE YOU FIRST MOVE :) !!\n"
   val ERROR_GIVE_PLAYERS_START: String = "you can't start the Game without giving the name of the players\n" + ENTER_PLAYERS
   val ERROR_MOVE: String = "you are out of the limit of the grid!! please retry with correct move"
-  val NEXT: String = " you are next!! \n"
+  val NEXT: String = " you are next!! \n press z to undo"
   val GAME_RESET_MESSAGE: String = "Game was reseted!!!! \n"
   val ERROR_GIVE_PLAYERS_RESET: String = "you can't reset the Game without giving the name of the players\n" + ENTER_PLAYERS
   val WIN_MESSAGE: String = " you won !! congratulation \n "+ " if you want to start again press r + enter, if not press q + enter to quit"
-  val UNDO_STEP: String = "you just undid your step, you can replay"
+  val UNDO_STEP: String = "you just undid your step, you can replay or press y to redo"
   val REDO_STEP: String = "you just redid your step, thanks"
   val TITLE: String = "TicTacToe 4x4x4"
   val MOVEMENT: String = "To move the Grids : D to go right, A to go left, W to go up, S to go down\n\n"

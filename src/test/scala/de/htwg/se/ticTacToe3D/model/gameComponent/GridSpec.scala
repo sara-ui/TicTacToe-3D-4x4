@@ -1,6 +1,5 @@
-package de.htwg.se.ticTacToe3D.model
+package de.htwg.se.ticTacToe3D.model.gameComponent
 
-import de.htwg.se.ticTacToe3D.model.gameComponent.Grid
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.{Cell, Grid}
 import org.scalatest.{Matchers, WordSpec}
 

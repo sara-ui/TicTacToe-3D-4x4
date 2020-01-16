@@ -1,4 +1,4 @@
-package de.htwg.se.ticTacToe3D.model
+package de.htwg.se.ticTacToe3D.model.gameComponent
 
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Player
 import org.scalatest._
