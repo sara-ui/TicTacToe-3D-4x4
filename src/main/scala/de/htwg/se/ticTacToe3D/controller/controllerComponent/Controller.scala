@@ -1,17 +1,18 @@
 package de.htwg.se.ticTacToe3D.controller.controllerComponent
 
+import com.google.inject.Inject
 import de.htwg.se.ticTacToe3D.controller.ControllerInterface
 import de.htwg.se.ticTacToe3D.model.gameComponent.GameInterface
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
 import de.htwg.se.ticTacToe3D.model.{FactoryProducer, WinStateStrategyTemplate}
-import de.htwg.se.ticTacToe3D.util.{Observable, UndoManager}
+import de.htwg.se.ticTacToe3D.util.UndoManager
 
-class Controller(var game: GameInterface,
-                  var oneGridStrategy: Array[WinStateStrategyTemplate],
-                  var allGridStrategy : Array[WinStateStrategyTemplate])
+class Controller (var game: GameInterface,
+                            var oneGridStrategy: Array[WinStateStrategyTemplate],
+                            var allGridStrategy : Array[WinStateStrategyTemplate])
   extends ControllerInterface {
   private val undoManager = new UndoManager
-
+  @Inject()
   def this (game: GameInterface) {
     this(game,
       Array.fill(2)(FactoryProducer("oneD")),

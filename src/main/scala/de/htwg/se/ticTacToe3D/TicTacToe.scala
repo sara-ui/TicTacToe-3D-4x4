@@ -1,5 +1,6 @@
 package de.htwg.se.ticTacToe3D
 
+import com.google.inject.{Guice, Injector}
 import de.htwg.se.ticTacToe3D.aview.Tui
 import de.htwg.se.ticTacToe3D.controller.ControllerInterface
 import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
@@ -9,7 +10,8 @@ import de.htwg.se.ticTacToe3D.view.gui.TicTacToeGUI
 import scala.io.StdIn.readLine
 
 object TicTacToe {
-  var controller: ControllerInterface = new Controller(new Game())
+  val injector: Injector = Guice.createInjector(new TicTacToeModule)
+  var controller: ControllerInterface = injector.getInstance(classOf[ControllerInterface])
 
   val tui = new Tui(controller)
   val gui = new TicTacToeGUI(controller)
