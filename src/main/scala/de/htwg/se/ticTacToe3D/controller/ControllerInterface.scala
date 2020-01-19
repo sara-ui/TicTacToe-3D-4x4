@@ -16,6 +16,8 @@ trait ControllerInterface extends Observable{
   def getNextPlayer(index: Int): String
   def undo: Unit
   def redo: Unit
+  def save: Unit
+  def load: Unit
   def reset: Boolean
   def won: Array[Boolean]
   def setPlayers (player1: String, player2: String): Boolean

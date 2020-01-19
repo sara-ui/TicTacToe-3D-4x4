@@ -1,7 +1,9 @@
 package de.htwg.se.ticTacToe3D.controller.controllerComponent
 
-import com.google.inject.Inject
+import com.google.inject.{Guice, Inject}
+import de.htwg.se.ticTacToe3D.TicTacToeModule
 import de.htwg.se.ticTacToe3D.controller.ControllerInterface
+import de.htwg.se.ticTacToe3D.model.fileIoComponent.FileIOInterface
 import de.htwg.se.ticTacToe3D.model.gameComponent.GameInterface
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
 import de.htwg.se.ticTacToe3D.model.{FactoryProducer, WinStateStrategyTemplate}
@@ -12,6 +14,8 @@ class Controller (var game: GameInterface,
                             var allGridStrategy : Array[WinStateStrategyTemplate])
   extends ControllerInterface {
   private val undoManager = new UndoManager
+  val injector = Guice.createInjector(new TicTacToeModule)
+  val fileIo = injector.getInstance(classOf[FileIOInterface])
   @Inject()
   def this (game: GameInterface) {
     this(game,
@@ -41,6 +45,19 @@ class Controller (var game: GameInterface,
       notifyObservers
     }
     true
+  }
+
+  def save = {
+    fileIo.save(game, this.myTurn)
+    statusMessage = Messages.GAME_SAVED
+    notifyObservers
+  }
+
+  def load = {
+    val (loadedGame, turn) = fileIo.load
+    game = loadedGame
+    statusMessage = Messages.GAME_LOADED + "\n" +  getNextPlayer(if(turn) 0 else 1) + Messages.YOU_ARE_NEXT
+    notifyObservers
   }
 
   def setValue(row: Int, column: Int, grid: Int): Boolean = {
@@ -134,12 +151,15 @@ object Messages {
   val ERROR_GIVE_PLAYERS_START: String = "you can't start the Game without giving the name of the players\n" + ENTER_PLAYERS
   val ERROR_MOVE: String = "you are out of the limit of the grid!! please retry with correct move"
   val NEXT: String = " you are next!! \n press z to undo"
+  val YOU_ARE_NEXT: String = " you are next!! \n"
   val GAME_RESET_MESSAGE: String = "Game was reseted!!!! \n"
   val ERROR_GIVE_PLAYERS_RESET: String = "you can't reset the Game without giving the name of the players\n" + ENTER_PLAYERS
   val WIN_MESSAGE: String = " you won !! congratulation \n "+ " if you want to start again press r + enter, if not press q + enter to quit"
   val UNDO_STEP: String = "you just undid your step, you can replay or press y to redo"
   val REDO_STEP: String = "you just redid your step, thanks"
   val TITLE: String = "TicTacToe 4x4x4"
+  val GAME_SAVED: String = "Game is Saved"
+  val GAME_LOADED: String = "Game is loaded"
   val MOVEMENT: String = "To move the Grids : D to go right, A to go left, W to go up, S to go down\n\n"
   def playerMoveToString(player: String, row: Int, column: Int, grid: Int): String = player + " played : (" + row + "," + column + ") in Grid " + grid + "\n"
 }

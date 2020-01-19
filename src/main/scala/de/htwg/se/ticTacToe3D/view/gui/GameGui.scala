@@ -142,6 +142,8 @@ class GameGui() extends Application with Observer{
       if (KeyCode.Q.equals(ke.getCode)) TicTacToe.controller.exit
       if (KeyCode.R.equals(ke.getCode)) TicTacToe.controller.reset
       if (KeyCode.Z.equals(ke.getCode)) TicTacToe.controller.undo
+      if (KeyCode.S.equals(ke.getCode)) TicTacToe.controller.save
+      if (KeyCode.L.equals(ke.getCode)) TicTacToe.controller.load
       if (KeyCode.Y.equals(ke.getCode)) TicTacToe.controller.redo
       if (KeyCode.D.equals(ke.getCode)) cam.ry.setAngle(cam.ry.getAngle - 5)
       if (KeyCode.A.equals(ke.getCode)) cam.ry.setAngle(cam.ry.getAngle + 5)

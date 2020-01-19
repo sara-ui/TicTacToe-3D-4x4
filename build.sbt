@@ -13,7 +13,8 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
 libraryDependencies += "com.google.inject" % "guice" % "4.1.0"
 libraryDependencies += "net.codingwell" %% "scala-guice" % "4.1.0"
 
-
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.1.1"
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.6"
 
 
 
