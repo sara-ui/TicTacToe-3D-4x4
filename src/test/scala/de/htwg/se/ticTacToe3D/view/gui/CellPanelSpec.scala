@@ -18,8 +18,6 @@ class CellPanelSpec extends WordSpec with Matchers {
 
       cellPanel.setValue(cell2)
 
-      cellPanel.isSet should be(true)
-
       cellPanel.resetCell(Color.ANTIQUEWHITE)
     }
   }
