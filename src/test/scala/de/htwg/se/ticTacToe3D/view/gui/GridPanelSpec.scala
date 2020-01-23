@@ -1,7 +1,7 @@
 package de.htwg.se.ticTacToe3D.view.gui
 
-import de.htwg.se.ticTacToe3D.controller.ControllerInterface
-import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.ControllerInterface
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.controllerBaseImpl.Controller
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Cell
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
 import javafx.scene.paint.Color

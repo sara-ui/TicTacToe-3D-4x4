@@ -1,4 +1,4 @@
-package de.htwg.se.ticTacToe3D.controller.controllerComponent
+package de.htwg.se.ticTacToe3D.controller.controllerComponent.controllerBaseImpl
 
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.{Cell, Game}
 import de.htwg.se.ticTacToe3D.util.Observer

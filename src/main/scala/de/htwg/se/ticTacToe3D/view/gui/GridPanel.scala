@@ -1,5 +1,5 @@
 package de.htwg.se.ticTacToe3D.view.gui
-import de.htwg.se.ticTacToe3D.controller.ControllerInterface
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.ControllerInterface
 import javafx.scene.Group
 import javafx.scene.input.MouseEvent
 import javafx.scene.transform.Rotate

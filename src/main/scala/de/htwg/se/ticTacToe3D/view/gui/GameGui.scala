@@ -3,7 +3,7 @@ package de.htwg.se.ticTacToe3D.view.gui
 import java.util
 
 import de.htwg.se.ticTacToe3D.TicTacToe
-import de.htwg.se.ticTacToe3D.controller.controllerComponent.Messages
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.controllerBaseImpl.Messages
 import de.htwg.se.ticTacToe3D.util.Observer
 import javafx.application.Application
 import javafx.stage.Stage

@@ -1,8 +1,8 @@
-package de.htwg.se.ticTacToe3D.controller
+package de.htwg.se.ticTacToe3D.controller.controllerComponent
 
 import de.htwg.se.ticTacToe3D.model.WinStateStrategyTemplate
 import de.htwg.se.ticTacToe3D.model.gameComponent.GameInterface
-import de.htwg.se.ticTacToe3D.util.{Observable}
+import de.htwg.se.ticTacToe3D.util.Observable
 
 trait ControllerInterface extends Observable{
   def game: GameInterface

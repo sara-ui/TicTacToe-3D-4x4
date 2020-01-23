@@ -2,8 +2,7 @@ package de.htwg.se.ticTacToe3D
 
 import com.google.inject.{Guice, Injector}
 import de.htwg.se.ticTacToe3D.aview.Tui
-import de.htwg.se.ticTacToe3D.controller.ControllerInterface
-import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.ControllerInterface
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
 import de.htwg.se.ticTacToe3D.view.gui.TicTacToeGUI
 

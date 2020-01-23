@@ -5,8 +5,8 @@ import de.htwg.se.ticTacToe3D.model.gameComponent.GameInterface
 import de.htwg.se.ticTacToe3D.model.gameComponent.gameImpl.Game
 import net.codingwell.scalaguice.ScalaModule
 import com.google.inject.Singleton
-import de.htwg.se.ticTacToe3D.controller.ControllerInterface
-import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.ControllerInterface
+import de.htwg.se.ticTacToe3D.controller.controllerComponent.controllerBaseImpl.Controller
 import de.htwg.se.ticTacToe3D.model.fileIoComponent._
 
 
