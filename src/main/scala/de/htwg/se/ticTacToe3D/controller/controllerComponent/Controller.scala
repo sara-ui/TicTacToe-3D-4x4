@@ -160,6 +160,6 @@ object Messages {
   val TITLE: String = "TicTacToe 4x4x4"
   val GAME_SAVED: String = "Game is Saved"
   val GAME_LOADED: String = "Game is loaded"
-  val MOVEMENT: String = "To move the Grids : D to go right, A to go left, W to go up, S to go down\n\n"
+  val MOVEMENT: String = "To move the Grids : Please use the arrows\n\n"
   def playerMoveToString(player: String, row: Int, column: Int, grid: Int): String = player + " played : (" + row + "," + column + ") in Grid " + grid + "\n"
 }
