@@ -38,6 +38,13 @@ class GameSpec extends WordSpec with Matchers {
         newGame.grids(1).cell(1, 1) should be(Cell("O"))
         game.grids(1).cell(1, 1) should be(Cell(""))
       }
+      "set players" in {
+        val newGame = game.setPlayers("Sara", "Asmaa", "X", "O")
+        newGame.players(0).name should be("Sara")
+        newGame.players(1).name should be("Asmaa")
+        newGame.players(0).symbol should be("X")
+        newGame.players(1).symbol should be("O")
+      }
       "sell is set" in {
         val newGame = game.set(1, 1, 1, 1)
         newGame.cellIsSet(1, 1, 1) should be(true)
