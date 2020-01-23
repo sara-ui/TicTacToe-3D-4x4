@@ -1,7 +1,6 @@
 package de.htwg.se.ticTacToe3D.aview
 
 import de.htwg.se.ticTacToe3D.controller.ControllerInterface
-import de.htwg.se.ticTacToe3D.controller.controllerComponent.Controller
 import de.htwg.se.ticTacToe3D.util.Observer
 
 
